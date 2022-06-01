@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace _4Praktinis
 {
+    [Serializable]
     public class PasswordsData
     {
         public string name { get; set; }

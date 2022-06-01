@@ -23,8 +23,10 @@ namespace _4Praktinis
         public Pagrindinis(string name)
         {
             this.username = name;
+            CheckCSVFile();
             InitializeComponent();
             LoadInfo(passwordsList);
+            nowList = passwordsList;
 
         }
 
@@ -138,7 +140,8 @@ namespace _4Praktinis
                 var a = DeepCopy(nowList);
                 foreach (var item in a)
                 {
-                    item.password = AES.AES_DecryptString(item.password);
+                    string v = AES.AES_DecryptString(item.password);
+                    item.password = v;
                 }
                 LoadInfo(a);
                 passwordsShown = true;
@@ -166,6 +169,48 @@ namespace _4Praktinis
             T result = (T)formatter.Deserialize(stream);
             stream.Close();
             return result;
+        }
+
+        private void listBox_data_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadInfo(passwordsList);
+            nowList = passwordsList;
+            textBox1.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var a = DeepCopy(passwordsList.Where(x => x.name.Equals(textBox1.Text)).ToList());
+            if (a.Count() != 0)
+            {
+                LoadInfo(a);
+                nowList = a;
+            }
+            else
+            {
+                MessageBox.Show("Nothing found!");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string password = "";
+            String str = listBox_data.Items[0].ToString();
+
+            string[] stringlist = str.Split('-');
+
+            password = stringlist[2];
+
+            if (!passwordsShown)
+                password = AES.AES_DecryptString(password);
+
+            Clipboard.SetText(password);
+            MessageBox.Show("Slaptažodis išsaugotas į iškarpinę");
         }
     }
 }
