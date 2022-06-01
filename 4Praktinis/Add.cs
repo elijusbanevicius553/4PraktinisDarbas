@@ -19,10 +19,6 @@ namespace _4Praktinis
             InitializeComponent();
         }
 
-        private void Add_Load(object sender, EventArgs e)
-        {
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(textBox_pav.Text) && !String.IsNullOrEmpty(textBox_password.Text) && !String.IsNullOrEmpty(textBox_username.Text) && !String.IsNullOrEmpty(textBox_url.Text) && !String.IsNullOrEmpty(textBox_comment.Text))

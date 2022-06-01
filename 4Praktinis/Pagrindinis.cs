@@ -22,8 +22,10 @@ namespace _4Praktinis
         string username;
         public Pagrindinis(string name)
         {
-            InitializeComponent();
             this.username = name;
+            InitializeComponent();
+            LoadInfo(passwordsList);
+
         }
 
         private void Pagrindinis_Load(object sender, EventArgs e)
@@ -115,6 +117,55 @@ namespace _4Praktinis
         {
             Add add = new Add(this);
             add.Show();
+        }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            Delete delete = new Delete(passwordsList, this);
+            delete.Show();
+        }
+
+        private void button_update_Click(object sender, EventArgs e)
+        {
+            Update update = new Update(passwordsList, this);
+            update.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!passwordsShown)
+            {
+                var a = DeepCopy(nowList);
+                foreach (var item in a)
+                {
+                    item.password = AES.AES_DecryptString(item.password);
+                }
+                LoadInfo(a);
+                passwordsShown = true;
+            }
+
+            else
+            {
+                var a = DeepCopy(nowList);
+                foreach (var item in a)
+                {
+                    item.password = AES.AES_EncryptString(item.password);
+                }
+                LoadInfo(nowList);
+                passwordsShown = false;
+
+
+            }
+        }
+        public static T DeepCopy<T>(T item)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream stream = new MemoryStream();
+            formatter.Serialize(stream, item);
+            stream.Seek(0, SeekOrigin.Begin);
+            T result = (T)formatter.Deserialize(stream);
+            stream.Close();
+            return result;
         }
     }
 }

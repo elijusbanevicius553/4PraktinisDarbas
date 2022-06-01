@@ -32,3 +32,5 @@ C:\Users\Elijus\Desktop\4Praktinis\4Praktinis\obj\Debug\4Praktinis.csproj.CopyCo
 C:\Users\Elijus\Desktop\4Praktinis\4Praktinis\obj\Debug\4Praktinis.exe
 C:\Users\Elijus\Desktop\4Praktinis\4Praktinis\obj\Debug\4Praktinis.pdb
 C:\Users\Elijus\Desktop\4Praktinis\4Praktinis\obj\Debug\_4Praktinis.Add.resources
+C:\Users\Elijus\Desktop\4Praktinis\4Praktinis\obj\Debug\_4Praktinis.Delete.resources
+C:\Users\Elijus\Desktop\4Praktinis\4Praktinis\obj\Debug\_4Praktinis.Update.resources

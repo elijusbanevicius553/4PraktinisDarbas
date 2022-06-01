@@ -106,7 +106,6 @@
             this.Controls.Add(this.textBox_pav);
             this.Name = "Add";
             this.Text = "Add";
-            this.Load += new System.EventHandler(this.Add_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
