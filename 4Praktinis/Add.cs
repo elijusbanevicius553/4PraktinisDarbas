@@ -38,7 +38,21 @@ namespace _4Praktinis
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
 
+            string passwordgenerator = "";
+            int pwdLength = random.Next(10, 24);
+            for (int i = 0; i < pwdLength; i++)
+            {
+                passwordgenerator += (char)random.Next(33, 122);
+            }
+
+            this.textBox_password.Text = passwordgenerator;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
